@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:80"
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-}
+      DB_HOST: ${DB_HOST:-host.docker.internal}
+      DB_PORT: ${DB_PORT:-3306}
+      DB_NAME: ${DB_NAME:-cayxanh_db}
+      DB_USER: ${DB_USER:-root}
+      DB_PASSWORD: ${DB_PASSWORD-}
+    restart: unless-stopped
